@@ -26,11 +26,11 @@ A dedicated visualization notebook is also included to inspect generated or impo
 
 ## Documentation
 
-A complete User Guide describing all functionalities and their arguments is provided in this repository. It includes a description of configuration files used by the toolkit and how to modify them.
+A complete User Guide describing all functionalities and their arguments is provided in this repository (docs/). It includes a description of configuration files used by the toolkit and how to modify them.
 
 ## Example Applications
 
-Nanocraft has been used to generate extensive structural datasets for a variety of systems, including CdSe and CdTe (zincblende and wurtzite), GaN and InGaN (wurtzite), TiO2 (anatase), Pt, and Au (fcc). Structures, as well as inputs, are provided in this repository as a .tar.gz archive.
+Nanocraft has been used to generate extensive structural datasets for a variety of systems, including CdSe and CdTe (zincblende and wurtzite), GaN and InGaN (wurtzite), TiO2 (anatase), Pt, and Au (fcc). Structures, as well as inputs, are provided in examples/ as a .tar.xz archive.
 
 ## Citing Nanocraft
 
