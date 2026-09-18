@@ -1,0 +1,371 @@
+#!/bin/bash
+
+read -p "The files in misc/ will be reset. Do you want to continue? (yY/nN): " answer
+
+case "$answer" in
+    [yY])
+        echo "Continuing..."
+        ;;
+    [nN])
+        echo "Stopping."
+        exit 0
+        ;;
+    *)
+        echo "Invalid answer. Please answer y, Y or n, N."
+        exit 1
+        ;;
+esac
+
+MISC_DIR="../misc"
+
+cat <<EOF > "$MISC_DIR/angles.dat"
+# ================================================================
+#      CUSTOM ANGLES CONFIGURATION - This file can be edited.
+# ================================================================
+# This file allows you to specify custom bond angles when adding
+# a fragment onto a surface atom.
+#
+# Notes:
+# - If an angle is not provided, a default value will be used.
+# - All angles should be in degrees (°).
+#
+# Format:
+#   Atom1  Atom2  Atom3  Angle
+#   Example:
+#       Cd  S  H  97.0
+#       S   H  H  92.1
+# ================================================================
+EOF
+
+
+cat <<EOF > "$MISC_DIR/bonds.dat"
+# ================================================================
+#  CUSTOM BOND DISTANCES CONFIGURATION - This file can be edited.
+# ================================================================
+# This file allows you to specify custom bond distances used for:
+#   1) Neighbor detection
+#   2) Fragment/ligand placement
+#
+# Notes:
+# - Default radius for bond detection is defined by the line:
+#       Ch  Ch  3.050
+#   This can be edited as needed.
+# - Bond candidates detected within a sphere of radius r_Ch-Ch
+#   will be compared to the values provided here. If absent,
+#   an approximate value will be computed using covalent radii.
+# - If a bond's actual distance is too different from the value
+#   provided here, it will be rejected.
+# - All bond lengths must be in angstroms (Å).
+#
+# Format:
+#   Atom1  Atom2  BondLength
+#   Example:
+#       Cd  Te  2.868
+# ================================================================
+EOF
+
+
+cat <<EOF > "$MISC_DIR/coordination.json"
+{
+  "_comment1:": "Coordination of atoms in the nanoparticle, filling this file is highly recommended.",
+  "_comment2:": "Fill each section with lines formatted as: 'type': [int_1, int_2_optional, ...],",
+  "bulk_coord": {
+  },
+  "surf_coord": {
+  },
+  "ligs_coord": {
+  }
+}
+EOF
+
+
+cat <<EOF > "$MISC_DIR/atomic.dat"
+# =================================================================================
+#      ATOMIC PROPERTIES CONFIGURATION - This file need not to be edited.
+# =================================================================================
+# This file contains atomic properties of interest used by the program.
+# 
+# - All units are indicated in the column headers.
+# - Reference:
+# 	- https://pubchem.ncbi.nlm.nih.gov/
+# 	- https://physics.nist.gov/
+#   - https://sciencenotes.org/
+#   - https://en.wikipedia.org/
+#
+# Format:
+#  Z symbol  mass(amu)  electronegativity  r_cov(pm)  r_at(pm)  r_vdw(pm)   ox_state
+# ==================================================================================
+  1    H     1.008000        2.20           31.0       53.0     120.0         1
+  2   He     4.002602         NaN           28.0       31.0     140.0         0
+  3   Li     6.940000        0.98          128.0      167.0     182.0         1
+  4   Be     9.012183        1.57           96.0      112.0       NaN         2
+  5    B    10.810000        2.04           85.0       87.0       NaN         3
+  6    C    12.011000        2.55           76.0       67.0     170.0        -4
+  7    N    14.007000        3.04           71.0       56.0     155.0        -3
+  8    O    15.999000        3.44           66.0       48.0     152.0        -2
+  9    F    18.998403        3.98           57.0       42.0     147.0        -1
+ 10   Ne    20.179700         NaN           58.0       38.0     154.0         0
+ 11   Na    22.989769        0.93          166.0      190.0     227.0         1
+ 12   Mg    24.305000        1.31          141.0      145.0     173.0         2
+ 13   Al    26.981538        1.61          121.0      118.0       NaN         3
+ 14   Si    28.085000        1.90          111.0      111.0     210.0         4
+ 15    P    30.973762        2.19          107.0       98.0     180.0        -3
+ 16    S    32.060000        2.58          105.0       87.0     180.0        -2
+ 17   Cl    35.450000        3.16          102.0       79.0     175.0        -1
+ 18   Ar    39.948000         NaN          106.0       71.0     188.0         0
+ 19    K    39.098300        0.82          203.0      243.0     275.0         1
+ 20   Ca    40.078000        1.00          176.0      194.0       NaN         2
+ 21   Sc    44.955908        1.36          170.0      184.0       NaN         3
+ 22   Ti    47.867000        1.54          160.0      176.0       NaN         4
+ 23    V    50.941500        1.63          153.0      171.0       NaN         2
+ 24   Cr    51.996100        1.66          139.0      166.0       NaN         2
+ 25   Mn    54.938044        1.55          139.0      161.0       NaN         2
+ 26   Fe    55.845000        1.83          132.0      156.0       NaN         2
+ 27   Co    58.933194        1.88          126.0      152.0       NaN         2
+ 28   Ni    58.693400        1.91          124.0      149.0     163.0         2
+ 29   Cu    63.546000        1.90          132.0      145.0     140.0         1
+ 30   Zn    65.380000        1.65          122.0      142.0     139.0         2
+ 31   Ga    69.723000        1.81          122.0      136.0     187.0         3
+ 32   Ge    72.630000        2.01          120.0      125.0       NaN         4
+ 33   As    74.921595        2.18          119.0      114.0     185.0         3
+ 34   Se    78.971000        2.55          120.0      103.0     190.0        -2
+ 35   Br    79.904000        2.96          120.0       94.0     185.0        -1
+ 36   Kr    83.798000        3.00          116.0       87.0     202.0         0
+ 37   Rb    85.467800        0.82          220.0      265.0       NaN         1
+ 38   Sr    87.620000        0.95          195.0      219.0       NaN         2
+ 39    Y    88.905840        1.22          190.0      212.0       NaN         3
+ 40   Zr    91.224000        1.33          175.0      206.0       NaN         4
+ 41   Nb    92.906370        1.60          164.0      198.0       NaN         5
+ 42   Mo    95.950000        2.16          154.0      190.0       NaN         4
+ 43   Tc    97.000000        1.90          147.0      183.0       NaN         4
+ 44   Ru   101.070000        2.20          146.0      178.0       NaN         3
+ 45   Rh   102.905500        2.28          142.0      173.0       NaN         3
+ 46   Pd   106.420000        2.20          139.0      169.0     163.0         2
+ 47   Ag   107.868200        1.93          145.0      165.0     172.0         1
+ 48   Cd   112.414000        1.69          144.0      161.0     158.0         2
+ 49   In   114.818000        1.78          142.0      156.0     193.0         3
+ 50   Sn   118.710000        1.96          139.0      145.0     217.0         4
+ 51   Sb   121.760000        2.05          139.0      133.0       NaN         3
+ 52   Te   127.600000        2.10          138.0      123.0     206.0        -2
+ 53    I   126.904470        2.66          139.0      115.0     198.0        -1
+ 54   Xe   131.293000        2.60          140.0      108.0     216.0         0
+ 55   Cs   132.905452        0.79          244.0      298.0       NaN         1
+ 56   Ba   137.327000        0.89          215.0      253.0       NaN         2  
+ 57   La   138.905470        1.10          207.0        NaN       NaN         3
+ 58   Ce   140.116000        1.12          204.0        NaN       NaN         3
+ 59   Pr   140.907660        1.13          203.0      247.0       NaN         3
+ 60   Nd   144.242000        1.14          201.0      206.0       NaN         3
+ 61   Pm   145.000000         NaN          199.0      205.0       NaN         3
+ 62   Sm   150.360000        1.17          198.0      238.0       NaN         3
+ 63   Eu   151.964000         NaN          198.0      231.0       NaN         3
+ 64   Gd   157.250000        1.20          196.0      233.0       NaN         3
+ 65   Tb   158.925350         NaN          194.0      225.0       NaN         3
+ 66   Dy   162.500000        1.22          192.0      228.0       NaN         3
+ 67   Ho   164.930330        1.23          192.0      226.0       NaN         3
+ 68   Er   167.259000        1.24          189.0      226.0       NaN         3
+ 69   Tm   168.934220        1.25          190.0      222.0       NaN         3
+ 70   Yb   173.045000         NaN          187.0      222.0       NaN         3
+ 71   Lu   174.966800        1.27          187.0      217.0       NaN         3
+ 72   Hf   178.490000        1.30          175.0      208.0       NaN         4
+ 73   Ta   180.947880        1.50          170.0      200.0       NaN         5
+ 74    W   183.840000        2.36          162.0      193.0       NaN         4
+ 75   Re   186.207000        1.90          151.0      188.0       NaN         3
+ 76   Os   190.230000        2.20          144.0      185.0       NaN         4
+ 77   Ir   192.217000        2.20          141.0      180.0       NaN         3
+ 78   Pt   195.084000        2.28          136.0      177.0     175.0         2
+ 79   Au   196.966569        2.54          136.0      174.0     166.0         1
+ 80   Hg   200.592000        2.00          132.0      171.0     155.0         1
+ 81   Tl   204.380000        1.62          145.0      156.0     196.0         1
+ 82   Pb   207.200000        2.33          146.0      154.0     202.0         2
+ 83   Bi   208.980400        2.02          148.0      143.0       NaN         1
+ 84   Po   209.000000        2.00          140.0      135.0       NaN         2
+ 85   At   210.000000        2.20          150.0      127.0       NaN        -1
+ 86   Rn   222.000000         NaN          150.0      120.0       NaN         0
+ 87   Fr   223.000000        0.70          260.0        NaN       NaN         1
+ 88   Ra   226.000000        0.90          221.0        NaN       NaN         2
+ 89   Ac   227.000000        1.10          215.0        NaN       NaN         3
+ 90   Th   232.037700        1.30          206.0        NaN       NaN         4
+ 91   Pa   231.035880        1.50          200.0        NaN       NaN         5
+ 92    U   238.028910        1.38          196.0        NaN     186.0         6
+ 93   Np   237.000000        1.36          190.0        NaN       NaN         7
+ 94   Pu   244.000000        1.28          187.0        NaN       NaN         4
+ 95   Am   243.000000        1.30          180.0        NaN       NaN         3
+ 96   Cm   247.000000        1.30          169.0        NaN       NaN         3
+ 97   Bk   247.000000        1.30            NaN        NaN       NaN         3
+ 98   Cf   251.000000        1.30            NaN        NaN       NaN         3
+ 99   Es   252.000000        1.30            NaN        NaN       NaN         3
+100   Fm   257.000000        1.30            NaN        NaN       NaN         3
+101   Md   258.000000        1.30            NaN        NaN       NaN         3
+102   No   259.000000        1.30            NaN        NaN       NaN         2
+103   Lr   262.000000         NaN            NaN        NaN       NaN         3
+104   Rf   267.000000         NaN            NaN        NaN       NaN         4
+105   Db   270.000000         NaN            NaN        NaN       NaN        NaN
+106   Sg   269.000000         NaN            NaN        NaN       NaN        NaN
+107   Bh   270.000000         NaN            NaN        NaN       NaN        NaN
+108   Hs   270.000000         NaN            NaN        NaN       NaN        NaN
+109   Mt   278.000000         NaN            NaN        NaN       NaN        NaN
+110   Ds   281.000000         NaN            NaN        NaN       NaN        NaN
+111   Rg   281.000000         NaN            NaN        NaN       NaN        NaN
+112   Cn   285.000000         NaN            NaN        NaN       NaN        NaN
+113   Nh   286.000000         NaN            NaN        NaN       NaN        NaN
+114   Fl   289.000000         NaN            NaN        NaN       NaN         2
+115   Mc   289.000000         NaN            NaN        NaN       NaN         1
+116   Lv   293.000000         NaN            NaN        NaN       NaN         2   
+117   Ts   293.000000         NaN            NaN        NaN       NaN         1
+118   Og   294.000000         NaN            NaN        NaN       NaN         2
+EOF
+
+
+cat <<EOF > "$MISC_DIR/order.dat"
+# ================================================================
+#      ELEMENT ORDER CONFIGURATION - This file can be edited.
+# ================================================================
+# This file defines the conventional order of elements for output
+# formatting and other processing purposes.
+#
+# Notes:
+# - You may update the order according to your preferences.
+# - The order is primarily used to distinguish:
+#       • Bulk / inorganic elements
+#       • Ligand / organic elements
+#       • Other categories if needed
+# - The file should contain one element symbol per line.
+#
+# Sections:
+#   1. Alkali metals
+#   2. Alkaline earth metals
+#   3. Transition metals
+#   4. Post-transition / metalloids
+#   ... and so on, as desired
+# ================================================================
+# 1. Alkali metals 
+Li
+Na
+K
+Rb
+Cs
+Fr
+# 2. Alkaline earth metals 
+Be
+Mg
+Ca
+Sr
+Ba
+Ra
+# 3. Transition metals 
+Sc
+Ti
+V
+Cr
+Mn
+Fe
+Co
+Ni
+Cu
+Zn
+Y
+Zr
+Nb
+Mo
+Tc
+Ru
+Rh
+Pd
+Ag
+Cd
+Hf
+Ta
+W
+Re
+Os
+Ir
+Pt
+Au
+Hg
+# 4. Post-transition / metalloids 
+Al
+Ga
+In
+Tl
+Ge
+Sn
+Pb
+Sb
+Bi
+Po
+# 5. Chalcogens 
+Te
+Se
+S
+O
+# 6. Pnictogens 
+N
+P
+As
+# 7. Halogens 
+F
+Cl
+Br
+I
+At
+# 8. Noble gases 
+He
+Ne
+Ar
+Kr
+Xe
+Rn
+# 9. Light / organic elements 
+C
+H
+B
+Si
+# 10. Lanthanides 
+La
+Ce
+Pr
+Nd
+Pm
+Sm
+Eu
+Gd
+Tb
+Dy
+Ho
+Er
+Tm
+Yb
+Lu
+# 11. Actinides 
+Ac
+Th
+Pa
+U
+Np
+Pu
+Am
+Cm
+Bk
+Cf
+Es
+Fm
+Md
+No
+Lr
+# Superheavy elements 
+Rf
+Db
+Sg
+Bh
+Hs
+Mt
+Ds
+Rg
+Cn
+Nh
+Fl
+Mc
+Lv
+Ts
+Og
+EOF
