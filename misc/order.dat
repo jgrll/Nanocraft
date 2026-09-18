@@ -1,0 +1,151 @@
+# ================================================================
+#      ELEMENT ORDER CONFIGURATION - This file can be edited.
+# ================================================================
+# This file defines the conventional order of elements for output
+# formatting and other processing purposes.
+#
+# Notes:
+# - You may update the order according to your preferences.
+# - The order is primarily used to distinguish:
+#       • Bulk / inorganic elements
+#       • Ligand / organic elements
+#       • Other categories if needed
+# - The file should contain one element symbol per line.
+#
+# Sections:
+#   1. Alkali metals
+#   2. Alkaline earth metals
+#   3. Transition metals
+#   4. Post-transition / metalloids
+#   ... and so on, as desired
+# ================================================================
+# 1. Alkali metals 
+Li
+Na
+K
+Rb
+Cs
+Fr
+# 2. Alkaline earth metals 
+Be
+Mg
+Ca
+Sr
+Ba
+Ra
+# 3. Transition metals 
+Sc
+Ti
+V
+Cr
+Mn
+Fe
+Co
+Ni
+Cu
+Zn
+Y
+Zr
+Nb
+Mo
+Tc
+Ru
+Rh
+Pd
+Ag
+Cd
+Hf
+Ta
+W
+Re
+Os
+Ir
+Pt
+Au
+Hg
+# 4. Post-transition / metalloids 
+Al
+Ga
+In
+Tl
+Ge
+Sn
+Pb
+Sb
+Bi
+Po
+# 5. Chalcogens 
+Te
+Se
+S
+O
+# 6. Pnictogens 
+N
+P
+As
+# 7. Halogens 
+F
+Cl
+Br
+I
+At
+# 8. Noble gases 
+He
+Ne
+Ar
+Kr
+Xe
+Rn
+# 9. Light / organic elements 
+C
+H
+B
+Si
+# 10. Lanthanides 
+La
+Ce
+Pr
+Nd
+Pm
+Sm
+Eu
+Gd
+Tb
+Dy
+Ho
+Er
+Tm
+Yb
+Lu
+# 11. Actinides 
+Ac
+Th
+Pa
+U
+Np
+Pu
+Am
+Cm
+Bk
+Cf
+Es
+Fm
+Md
+No
+Lr
+# Superheavy elements 
+Rf
+Db
+Sg
+Bh
+Hs
+Mt
+Ds
+Rg
+Cn
+Nh
+Fl
+Mc
+Lv
+Ts
+Og

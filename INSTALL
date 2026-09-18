@@ -1,0 +1,87 @@
+NANOCRAFT — INSTALLATION INSTRUCTIONS
+=======================================
+
+REQUIREMENTS
+-------------
+- Python 3.10 or higher
+- No specific operating system requirements (Linux, macOS, Windows all supported)
+- pip (Python package installer)
+
+The installation is designed to be minimal and straightforward.
+
+
+1. DOWNLOAD THE SOURCE CODE
+-----------------------------
+Clone the repository with git:
+
+    git clone https://github.com/jgrll/Nanocraft.git
+    cd Nanocraft
+
+Alternatively, download the ZIP archive directly from the GitHub repository page
+and extract it:
+
+    https://github.com/jgrll/Nanocraft
+
+
+2. (RECOMMENDED) CREATE A VIRTUAL ENVIRONMENT
+------------------------------------------------
+While not strictly mandatory, it is recommended to create a dedicated Python
+virtual environment to keep dependencies isolated from the rest of your system.
+
+Using venv:
+
+    python3 -m venv env
+    source env/bin/activate        # Linux / macOS
+    env\Scripts\activate           # Windows
+
+Using conda:
+
+    conda create -n env python=3.10
+    conda activate env
+
+
+3. INSTALL DEPENDENCIES
+--------------------------
+All required dependencies are listed in requirements.txt and can be installed
+in a single command:
+
+    pip install -r requirements.txt
+
+If you want to use the toolkit on a remote machine, proceed to installation locally 
+and then export the full folder (with the env).
+
+4. LAUNCH NANOCRAFT
+----------------------
+Start Jupyter Notebook from the repository root:
+
+    jupyter notebook
+
+Then open the main notebook provided in the repository to start generating
+and functionalizing nanoparticle structures. No further configuration is
+required.
+
+A separate visualization notebook is also included to inspect generated
+structures, detected facets, and surface tessellation directly in your browser.
+
+Make sure you choose the right virtual environment.
+
+
+5. VERIFYING THE INSTALLATION
+--------------------------------
+To verify that Nanocraft and its dependencies were installed correctly, run
+the first cells of the main notebook, which import the toolkit's modules.
+If no import errors are raised, the installation is complete.
+
+
+TROUBLESHOOTING
+------------------
+- If you encounter permission errors during pip install, make sure your
+  virtual environment is activated (step 2) before running pip.
+- If Jupyter is not recognized as a command, ensure it was installed as part
+  of requirements.txt, or install it manually with:
+
+    pip install notebook
+
+For further help, please refer to the User Guide included in this repository,
+or open an issue on the GitHub repository:
+https://github.com/jgrll/Nanocraft/issues

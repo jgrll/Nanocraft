@@ -1,0 +1,10 @@
+{
+  "_comment1:": "Coordination of atoms in the nanoparticle, filling this file is highly recommended.",
+  "_comment2:": "Fill each section with lines formatted as: 'type': [int_1, int_2_optional, ...],",
+  "bulk_coord": {
+  },
+  "surf_coord": {
+  },
+  "ligs_coord": {
+  }
+}

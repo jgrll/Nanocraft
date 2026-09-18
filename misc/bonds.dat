@@ -1,0 +1,23 @@
+# ================================================================
+#  CUSTOM BOND DISTANCES CONFIGURATION - This file can be edited.
+# ================================================================
+# This file allows you to specify custom bond distances used for:
+#   1) Neighbor detection
+#   2) Fragment/ligand placement
+#
+# Notes:
+# - Default radius for bond detection is defined by the line:
+#       Ch  Ch  3.050
+#   This can be edited as needed.
+# - Bond candidates detected within a sphere of radius r_Ch-Ch
+#   will be compared to the values provided here. If absent,
+#   an approximate value will be computed using covalent radii.
+# - If a bond's actual distance is too different from the value
+#   provided here, it will be rejected.
+# - All bond lengths must be in angstroms (Å).
+#
+# Format:
+#   Atom1  Atom2  BondLength
+#   Example:
+#       Cd  Te  2.868
+# ================================================================

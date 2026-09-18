@@ -1,0 +1,16 @@
+# ================================================================
+#      CUSTOM ANGLES CONFIGURATION - This file can be edited.
+# ================================================================
+# This file allows you to specify custom bond angles when adding
+# a fragment onto a surface atom.
+#
+# Notes:
+# - If an angle is not provided, a default value will be used.
+# - All angles should be in degrees (°).
+#
+# Format:
+#   Atom1  Atom2  Atom3  Angle
+#   Example:
+#       Cd  S  H  97.0
+#       S   H  H  92.1
+# ================================================================
